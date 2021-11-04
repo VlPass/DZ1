@@ -1,0 +1,116 @@
+#include <iostream>
+#include <cstdint>
+#include <cassert>
+
+using namespace std;
+
+class Power {               // Задание 1.
+public:
+	float m_firth;
+	float m_second;
+	float POW;
+
+public:
+	void set(int firth=3, int second=5) {
+		m_firth = firth;
+		m_second = second;
+	}
+	void calculate() {
+		POW = pow(m_firth, m_second);
+		cout << POW << endl;
+	}
+
+		
+};
+
+class RGBA {       // Задание 2
+private:
+	uint8_t m_red;
+	uint8_t m_green;
+	uint8_t m_blue;
+	uint8_t m_alpha;
+public:
+	RGBA() {
+		m_red = 0;
+		m_green = 0;
+		m_blue = 0;
+		m_alpha = 255;	
+	}
+	RGBA(int r, int g, int b, int a) {
+		r = m_red;
+		g = m_green;
+		b = m_blue;
+		a = m_alpha;
+	}
+	void print() {
+		cout << m_red << "." << m_green << "." << m_blue << "." << m_alpha << "." << endl;
+	}
+
+};
+
+class Stack             // Задание 3
+{
+private:
+	int m_array[10]; 
+	int empty;
+
+public:
+	void reset()
+	{
+		empty = 0;
+		for (int i = 0; i < 10; ++i)
+			m_array[i] = 0;
+	}
+
+	bool push(int value)
+	{
+		if (empty == 10)
+			return false;
+		m_array[empty++] = value; 
+		return true;
+	}
+
+	int pop()
+	{
+		assert(empty > 0);
+		return m_array[--empty];
+	}
+
+	void print()
+	{
+		std::cout << "(";
+		for (int i = 0; i < empty; ++i)
+			std::cout <<m_array[i];
+		std::cout << ")" << endl;;
+	}
+};
+
+int main() {
+	Power out;
+	out.set(1,8);             //Задание 1
+	out.calculate(); 
+
+	RGBA rgba(1,2,3,255);    // Задание 2
+	rgba.print(); 
+
+	Stack stack;            // Задание 3
+	stack.reset();
+
+	stack.print();
+
+	stack.push(3);
+	stack.push(7);
+	stack.push(5);
+	stack.print();
+
+	stack.pop();
+	stack.print();
+
+	stack.pop();
+	stack.pop();
+
+	stack.print();
+
+	return 0;
+}
+
