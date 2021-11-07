@@ -6,7 +6,7 @@ using namespace std;
 class Person
 {
 private:
-    static int count; // счетчик 
+    static int count; 
 protected:
     string n_name;
     int n_age;
@@ -26,7 +26,7 @@ public:
     string GetName() { return n_name; }
     int GetAge() { return n_age; }
     int GetWighr() { return n_wight; }
-    virtual void Print()   //  виртуальная функция перегружаемая в классе Student
+    virtual void Print()   
     {
         cout << n_name << ' ' << n_age << ' ' << n_sex << ' ' << n_wight << endl;
     }
