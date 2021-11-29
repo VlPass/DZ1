@@ -1,0 +1,30 @@
+#include <vector>
+#include <cassert>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+template<typename T, typename N>                                  // Задание 1
+void insert_sorted(T& v, const N  n)
+{
+    const auto insert_pos(lower_bound(begin(v), end(v), n));
+    v.insert(insert_pos, n);
+}
+
+template<typename T>
+void inform(const T& v)
+{
+    for (const auto e : v) cout << e << ' ';
+}
+
+                                                                //------------
+
+
+int main()
+{
+    vector<int> v{ 1, 2, 4, 5, 5 };
+    assert(true == is_sorted(begin(v), end(v)));
+    insert_sorted(v, 3);
+    inform(v);
+}
